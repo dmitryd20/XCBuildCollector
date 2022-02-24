@@ -14,6 +14,8 @@ public func configure(_ app: Application) throws {
     ), as: .psql)
 
     // register migrations
+    app.migrations.add(CreateProjects())
+    app.migrations.add(CreateUsers())
     app.migrations.add(CreateEvents())
 
     // register views

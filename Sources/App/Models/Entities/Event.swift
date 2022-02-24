@@ -27,38 +27,38 @@ public final class Event: Model {
     public var id: Int?
 
     @Field(key: Keys.user)
-    var user: String!
+    public var user: String!
 
     @Field(key: Keys.hardware)
-    var hardware: String!
+    public var hardware: String!
 
     @Field(key: Keys.project)
-    var project: String!
+    public var project: String!
 
     @Field(key: Keys.startTime)
-    var startTime: Date!
+    public var startTime: Date!
 
     @Field(key: Keys.duration)
-    var duration: TimeInterval!
+    public var duration: TimeInterval!
 
     @Field(key: Keys.isSuccessful)
-    var isSuccessful: Bool!
+    public var isSuccessful: Bool!
 
     @Field(key: Keys.isIncremental)
-    var isIncremental: Bool?
+    public var isIncremental: Bool?
 
     // MARK: - Initialization
 
     public init() {}
 
     public init(id: Int? = nil,
-         user: String,
-         hardware: String,
-         project: String,
-         startTime: Date,
-         duration: TimeInterval,
-         isSuccessful: Bool,
-         isIncremental: Bool?) {
+                user: String,
+                hardware: String,
+                project: String,
+                startTime: Date,
+                duration: TimeInterval,
+                isSuccessful: Bool,
+                isIncremental: Bool?) {
         self.id = id
         self.user = user
         self.hardware = hardware
