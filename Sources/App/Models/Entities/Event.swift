@@ -4,6 +4,18 @@ import Fluent
 
 public final class Event: Model {
 
+    // MARK: - Nested Types
+
+    struct CreateRequest: Content {
+        let user: String
+        let device: String
+        let project: String
+        let started: Int
+        let duration: Int
+        let is_successful: Bool
+        let is_incremental: Bool?
+    }
+
     // MARK: -  Constants
 
     enum Keys {
