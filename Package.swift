@@ -25,6 +25,6 @@ let package = Package(
                 .unsafeFlags(["-cross-module-optimization"], .when(configuration: .release))
             ]
         ),
-        .executableTarget(name: "Run", dependencies: [.target(name: "App")])
+        .executableTarget(name: "XCBuildCollector-Run", dependencies: [.target(name: "App")])
     ]
 )
