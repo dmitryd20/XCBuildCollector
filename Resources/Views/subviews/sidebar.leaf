@@ -1,0 +1,5 @@
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="Sidebar">
+  <button class="w3-bar-item w3-button w3-hide-large" onclick="w3.hide('#Sidebar')">Close &times;</button>
+  <a href="/" class="w3-bar-item w3-button">Home</a>
+  <a href="/plots/all_projects" class="w3-bar-item w3-button">All projects</a>
+</div>

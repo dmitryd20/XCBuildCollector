@@ -37,5 +37,3 @@ private extension EventsController {
     }
 
 }
-
-
