@@ -18,6 +18,9 @@ public func configure(_ app: Application) throws {
     app.migrations.add(CreateUsers())
     app.migrations.add(CreateEvents())
 
+    // register files
+    app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+
     // register views
     app.views.use(.leaf)
 

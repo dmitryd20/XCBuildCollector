@@ -12,17 +12,20 @@ struct WebsiteController: RouteCollection {
 
     // MARK: - Private Properties
 
+    private let projectsService: ProjectsService
     private let eventsService: EventsService
 
     // MARK: - RouteCollection
 
     func boot(routes: RoutesBuilder) throws {
-        routes.get(use: indexHandler)
+        routes.get(use: showHomePage)
+
         let plotsRoutes = routes.grouped(.constant(Keys.routeGroup))
         plotsRoutes.get(.constant(Keys.allProjects), use: showAllProjects)
     }
 
     init(app: Application) {
+        self.projectsService = ProjectsService.build(for: app)
         self.eventsService = EventsService.build(for: app)
     }
 
@@ -32,14 +35,14 @@ struct WebsiteController: RouteCollection {
 
 private extension WebsiteController {
 
-    func indexHandler(_ request: Request) async throws -> View {
-        let context = Page(title: "XCBuildCollector")
+    func showHomePage(_ request: Request) async throws -> View {
+        let context = BasePage(pageInfo: .init(title: "XCBuildCollector"))
         return try await request.view.render("index", context)
     }
 
     func showAllProjects(_ request: Request) async throws -> View {
-        let context = Page(title: "XCBuildCollector")
-        return try await request.view.render("plot", context)
+        let context = BasePage(pageInfo: .init(title: "Average build durations"))
+        return try await request.view.render("projects_average", context)
     }
 
 }

@@ -3,14 +3,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="/styles/common.css">
 <style>
 </style>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
-<title>#(title)</title>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<title>#(pageInfo.title)</title>
 <body>
   #extend("subviews/sidebar")
   <div class="w3-main" style="margin-left:200px">
     #extend("subviews/header")
+    #import("plotContent")
   </div>
 </body>
 </html>
