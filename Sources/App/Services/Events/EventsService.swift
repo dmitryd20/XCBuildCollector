@@ -15,6 +15,11 @@ final class EventsService {
 
     // MARK: - Internal Methods
 
+    func getShortEvents(for projectName: String, historyTimeLimit: TimeInterval? = nil) async throws -> [EventShort] {
+        return try await eventsRepository.getEvents(for: projectName, historyTimeLimit: historyTimeLimit)
+            .concurrentMap(\.short)
+    }
+
     func createEvent(model: Event.CreateRequest) async throws {
         let event = Event(user: model.user,
                           hardware: model.device,

@@ -19,20 +19,32 @@ final class EventsDatabaseRepository: EventsRepository {
         try await event.save(on: database)
     }
 
-    func getEvents(for projectName: String) async throws -> [Event] {
+    func getEvents(for projectName: String, historyTimeLimit: TimeInterval?) async throws -> [Event] {
+        let startDay = getStartDay(for: historyTimeLimit)
         return try await Event.query(on: database)
             .filter(\.$project == projectName)
+            .filter(\.$startTime >= startDay)
             .sort(Event.Keys.startTime)
             .all()
     }
 
     func getAverageBuildTime(for projectName: String, historyTimeLimit: TimeInterval?) async throws -> TimeInterval? {
-        let startDay = historyTimeLimit.map { Date.today.advanced(by: -$0) } ?? .distantPast
+        let startDay = getStartDay(for: historyTimeLimit)
         return try await Event.query(on: database)
             .filter(\.$project == projectName)
             .filter(\.$startTime >= startDay)
             .average(\.$duration)?
             .truncated()
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension EventsDatabaseRepository {
+
+    func getStartDay(for historyTimeLimit: TimeInterval?) -> Date {
+        return historyTimeLimit.map { Date.today.advanced(by: -$0) } ?? .distantPast
     }
 
 }
