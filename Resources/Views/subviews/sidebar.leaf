@@ -2,4 +2,5 @@
   <button class="w3-bar-item w3-button w3-hide-large" onclick="w3.hide('#Sidebar')">Close &times;</button>
   <a href="/" class="w3-bar-item w3-button">Home</a>
   <a href="/plots/all_projects" class="w3-bar-item w3-button">All projects</a>
+  <a href="/plots/project_history" class="w3-bar-item w3-button">Project history</a>
 </div>

@@ -18,6 +18,11 @@ final class ProjectsService {
 
     // MARK: - Internal Methods
 
+    func getAllProjectNames() async throws -> [String] {
+        return try await projectsRepository.getAllProjects()
+            .map(\.name)
+    }
+
     func getAverageBuildTimes(historyTimeLimit: TimeInterval? = nil) async throws -> [ProjectShort] {
         let projects = try await projectsRepository.getAllProjects()
         let buildTimes = try await projects.concurrentMap { project -> ProjectShort in

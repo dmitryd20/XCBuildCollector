@@ -1,0 +1,21 @@
+#extend("plot"):
+    #export("plotContent"):
+        <script src="/scripts/utils.js"></script>
+        <script src="/scripts/project_history.js"></script>
+
+        <div class="w3-container w3-section" style="width:20%">
+            <select class="w3-select w3-border w3-teal w3-round-xxlarge w3-leftbar w3-rightbar w3-border-teal" name="projectSelect" onchange="if (this.selectedIndex) loadPlot(this.value);">
+                <option value="" disabled selected>Choose project</option>
+                #for(name in projectNames):
+                    <option value="#(name)">#(name)</option>
+                #endfor
+            </select>
+        </div>
+
+        <div class="w3-container w3-section">
+            <figure class="highcharts-figure">
+              <div id="chartContainer"></div>
+            </figure>
+        </div>
+    #endexport
+#endextend

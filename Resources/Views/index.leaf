@@ -12,7 +12,10 @@
   <div class="w3-main" style="margin-left:200px">
     #extend("subviews/header")
     <div class="w3-panel w3-padding-8">
-      <p><b>All projects</b> - compare average build time for all projects</p>
+      <p><b>All projects</b> - compare average build time for all projects.</p>
+    </div>
+    <div class="w3-panel w3-padding-8">
+      <p><b>Project history</b> - watch how project build time changed during its lifetime. The data is smoothed with a windowing method.</p>
     </div>
   </div>
 </body>
