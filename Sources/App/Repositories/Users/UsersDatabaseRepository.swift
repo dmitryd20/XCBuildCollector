@@ -1,6 +1,6 @@
 import Fluent
 
-final class ProjectsDatabaseRepository: ProjectsRepository {
+final class UsersDatabaseRepository: UsersRepository {
 
     // MARK: - Private Properties
 
@@ -14,9 +14,9 @@ final class ProjectsDatabaseRepository: ProjectsRepository {
 
     // MARK: - ProjectsRepository
 
-    func getAllProjects() async throws -> [Project] {
-        return try await Project.query(on: database)
-            .sort(Project.Keys.name)
+    func getAllUsers() async throws -> [User] {
+        return try await User.query(on: database)
+            .sort(User.Keys.email)
             .all()
     }
 

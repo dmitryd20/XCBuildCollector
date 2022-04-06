@@ -37,6 +37,15 @@ final class EventsDatabaseRepository: EventsRepository {
             .truncated()
     }
 
+    func getAverageBuildTime(forUser email: String, historyTimeLimit: TimeInterval?) async throws -> TimeInterval? {
+        let startDay = getStartDay(for: historyTimeLimit)
+        return try await Event.query(on: database)
+            .filter(\.$user == email)
+            .filter(\.$startTime >= startDay)
+            .average(\.$duration)?
+            .truncated()
+    }
+
 }
 
 // MARK: - Private Methods
