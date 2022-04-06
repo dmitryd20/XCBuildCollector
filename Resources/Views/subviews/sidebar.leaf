@@ -3,4 +3,5 @@
   <a href="/" class="w3-bar-item w3-button">Home</a>
   <a href="/plots/all_projects" class="w3-bar-item w3-button">All projects</a>
   <a href="/plots/project_history" class="w3-bar-item w3-button">Project history</a>
+  <a href="/plots/all_users" class="w3-bar-item w3-button">All users</a>
 </div>

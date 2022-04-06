@@ -9,6 +9,7 @@ struct WebsiteController: RouteCollection {
         static let routeGroup = "plots"
         static let allProjects = "all_projects"
         static let projectHistory = "project_history"
+        static let allUsers = "all_users"
     }
 
     // MARK: - Private Properties
@@ -24,6 +25,7 @@ struct WebsiteController: RouteCollection {
         let plotsRoutes = routes.grouped(.constant(Keys.routeGroup))
         plotsRoutes.get(.constant(Keys.allProjects), use: showAllProjects)
         plotsRoutes.get(.constant(Keys.projectHistory), use: showProjectHistory)
+        plotsRoutes.get(.constant(Keys.allUsers), use: showAllUsers)
     }
 
     init(app: Application) {
@@ -54,6 +56,11 @@ private extension WebsiteController {
             projectNames: projectNames
         )
         return try await request.view.render("project_history", context)
+    }
+
+    func showAllUsers(_ request: Request) async throws -> View {
+        let context = BasePage(pageInfo: .init(title: "Average build durations"))
+        return try await request.view.render("users_average", context)
     }
 
 }
