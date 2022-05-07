@@ -17,6 +17,9 @@
     <div class="w3-panel w3-padding-8">
       <p><b>Project history</b> - watch how project build time changed during its lifetime. The data is smoothed with a windowing method.</p>
     </div>
+    <div class="w3-panel w3-padding-8">
+      <p><b>All users</b> - compare average build time for all users for one selected project.</p>
+    </div>
   </div>
 </body>
 </html>
